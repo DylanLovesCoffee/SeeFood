@@ -15,9 +15,9 @@ export default class RecipeList extends Component {
     super();
     this.state = {
       data : [
-        {title: 'Boom pizza'},
-        {title: 'Malai Kofta'},
-        {title: 'Lame Salad'}
+        {title: 'Boom pizza', instructions: 'cook it'},
+        {title: 'Malai Kofta', instructions: 'cook it'},
+        {title: 'Lame Salad', instructions: 'cook it'}
       ]
     }
   }
@@ -29,7 +29,6 @@ export default class RecipeList extends Component {
   componentDidMount() {
     var str = this.props.navigation.state.params.name
     var url = "https://protected-mesa-93226.herokuapp.com/results?food="
-    // var key = "&api_key=" + RFN_KEY
     axios.get(url + str)
     .then((response) => {
       console.log(response);

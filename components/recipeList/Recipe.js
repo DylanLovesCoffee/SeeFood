@@ -10,7 +10,6 @@ import { StackNavigator } from 'react-navigation';
 
 export default class Recipe extends Component {
   render() {
-
     let {title, navigate, instructions} = this.props
     return(
       <Button
