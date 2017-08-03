@@ -10,16 +10,27 @@ import { StackNavigator } from 'react-navigation';
 
 export default class RecipeScreen extends Component {
 
-  render() {
+  constructor() {
+    super()
+    this.state = {
+      instructionsArray: ["recipe","instructions"]
+    }
+  }
+
+  componentDidMount() {
     if (this.props.navigation.state.params.instructions != undefined) {
       let instructionsString = this.props.navigation.state.params.instructions.replace(/\s+/g,' ').trim();
-      let instructionsArray = instructionsString.split('. ')
-    } else {
-        let instructionsArray = ["recipe","instructions"]
+      let stringArray = instructionsString.split('. ')
+      this.setState({
+        instructionsArray: stringArray
+      })
     }
+  }
+
+  render() {
     return(
       <ScrollView>
-        {instructionsArray.map(function(line) {
+        {this.state.instructionsArray.map(function(line) {
           return<Text>{line + ". \n"}</Text>
         })}
     </ScrollView>
